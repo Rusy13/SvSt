@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+#  todo-app:
+#    build: ./
+#    command:
+#      - "./todo-app"
+#      - "test-migration-up"  # Добавленная команда для запуска миграций
+#    ports:
+#      - "9000:9000"
+#      - "9001:9001"
+#    depends_on:
+#      - db
+#      - kafka1
+#      - kafka2
+#      - kafka3
+#    environment:
+#      - HOST=db
+#      - PORT=5432
+#      - POSTGRES_USER=postgres
+#      - PASSWORD=1111
+#      - DBNAME=WB
+#      - KAFKA_BROKERS=kafka1:9091,kafka2:9092,kafka3:9093  # Добавляем список брокеров Kafka
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: SvSt
+
